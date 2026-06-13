@@ -403,3 +403,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _laserPrefab: {fileID: 8853663060251993702, guid: 9d38694ab6f196544b45e8d966cd3b3f,
+    type: 3}

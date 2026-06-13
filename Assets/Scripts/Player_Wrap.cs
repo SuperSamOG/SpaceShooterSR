@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player_Wrap : MonoBehaviour
 {
     //public or private reference
     //data type (int, float, bool, string)
@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _speed = 3.5f;
-    [SerializeField]
-    private GameObject _laserPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +23,7 @@ public class Player : MonoBehaviour
     {
         CalculateMovement();
 
-      if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
-        }
+
     }
 
     void CalculateMovement()
@@ -40,7 +35,14 @@ public class Player : MonoBehaviour
 
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
+        if (transform.position.y > 7.6f)
+        {
+            transform.position = new Vector3(transform.position.x, -5.6f, 0);
+        }
+        else if (transform.position.y < -5.6f)
+        {
+            transform.position = new Vector3(transform.position.x, 7.6f, 0);
+        }
 
         if (transform.position.x > 11.3)
         {
