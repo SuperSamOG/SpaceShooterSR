@@ -21,17 +21,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CalculateMovement();
+
+
+    }
+
+    void CalculateMovement()
+    {
         float HorizontalInput = Input.GetAxis("Horizontal");
         float VerticalInput = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(HorizontalInput, VerticalInput, 0);
 
         transform.Translate(direction * _speed * Time.deltaTime);
-
-        //if player position on the y is greater than 0
-        //y position = 0
-        //else if postion on the y is less than -3.8f
-        //y pos = -3.8f
 
         if (transform.position.y > 7.6f)
         {
@@ -41,11 +43,6 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 7.6f, 0);
         }
-
-        //if player position on the x is greater than 11
-        //x pos = -11
-        //else if player on the x is lesser than -11
-        //x pos = 11
 
         if (transform.position.x > 11.3)
         {
